@@ -1,7 +1,6 @@
 #!/bin/bash
 
 
-sc="/meso/.sc/"
 
 ### tszs ###
 
@@ -47,7 +46,7 @@ echo "ready system"
 
 if pgrep -x "wineserver" > /dev/null
 then
-${sc}kw.sh 2>&1 &
+wineserver -k; killall -9 wine wineserver; for i in `ps ax|egrep "*\.exe"|grep -v 'egrep'|awk '{print $1 }'`;do kill -9 $i;done > /dev/null 2>&1 &
 fi
 
 
